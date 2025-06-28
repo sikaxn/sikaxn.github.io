@@ -1,0 +1,16 @@
+{
+  "name": "LVGL Touchscreen",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "improv": false,
+      "parts": [
+        {
+          "path": "../firmware/lvglfw.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

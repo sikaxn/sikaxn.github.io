@@ -1,0 +1,16 @@
+{
+  "name": "Battery RFID Tracker",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": false,
+      "parts": [
+        {
+          "path": "../firmware/firmware_battery_webtool.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

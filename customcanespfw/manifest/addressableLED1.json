@@ -1,0 +1,16 @@
+{
+  "name": "Addressable LED CAN ID 1",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": false,
+      "parts": [
+        {
+          "path": "../firmware/firmware_1_webtool.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
