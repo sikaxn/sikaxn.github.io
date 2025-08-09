@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flash Firmware - ESP Web Tools</title>
+    <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
+  </head>
+  <body>
+    <h1>Flash Firmware 固件刷写 (Factory Test 工厂测试)</h1>
+
+    <label for="firmware-type">Select Firmware 选择固件:</label>
+    <select id="firmware-type">
+      <option value="factory">Factory Firmware 工厂固件</option>
+    </select>
+
+    <br /><br />
+
+    <div style="color: darkred; font-weight: bold;">
+      Please hold <code>IO0</code> button while clicking flash (after selecting serial port and connecting).
+    </div>
+
+    <br />
+
+    <esp-web-install-button id="flash-button" manifest="manifest/factory.json">
+      <span slot="unsupported">Your browser does not support Web Serial. Try Chrome or Edge.</span>
+    </esp-web-install-button>
+
+
+
+    <br /><br />
+    <hr />
+    <footer style="font-size: 0.9em; color: gray;">
+      Update: 2025-08-09 Factory Test Firmware
+    </footer>
+
+    <script>
+      const firmwareType = document.getElementById("firmware-type");
+      const button = document.getElementById("flash-button");
+
+      function updateManifest() {
+        // Always point to factory.json regardless of selection
+        button.setAttribute("manifest", "manifest/factory.json");
+      }
+
+      firmwareType.addEventListener("change", updateManifest);
+      updateManifest(); // initialize
+    </script>
+  </body>
+</html>
