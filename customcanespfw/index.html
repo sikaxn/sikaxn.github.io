@@ -11,7 +11,8 @@
     <select id="firmware-type">
       <option value="addressable">Addressable LED</option>
       <option value="addressableflex">Addressable LED (Flex ID)</option>
-      <option value="battery">Battery RFID (ID 33)</option>
+      <option value="battery_1">Battery RFID (ID 33, CAN TX 16 RX 17)</option>
+	  <option value="battery_2">Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)</option>
       <option value="lvgl">LVGL Touchscreen</option>
     </select>
 
@@ -63,34 +64,37 @@
       </a>
     </footer>
 
-    <script>
-      const firmwareType = document.getElementById("firmware-type");
-      const canIdSelect = document.getElementById("can-id");
-      const addressableGroup = document.getElementById("addressable-group");
-      const button = document.getElementById("flash-button");
+<script>
+  const firmwareType = document.getElementById("firmware-type");
+  const canIdSelect = document.getElementById("can-id");
+  const addressableGroup = document.getElementById("addressable-group");
+  const button = document.getElementById("flash-button");
 
-      function updateManifest() {
-        const type = firmwareType.value;
-        if (type === "addressable") {
-          addressableGroup.style.display = "block";
-          const canId = canIdSelect.value;
-          button.setAttribute("manifest", `manifest/addressableLED${canId}.json`);
-        } else if (type === "addressableflex") {
-          addressableGroup.style.display = "none";
-          button.setAttribute("manifest", "manifest/addressableLEDFlexID.json");
-        } else {
-          addressableGroup.style.display = "none";
-          if (type === "battery") {
-            button.setAttribute("manifest", "manifest/batteryRFID.json");
-          } else if (type === "lvgl") {
-            button.setAttribute("manifest", "manifest/lvgl.json");
-          }
-        }
+  function updateManifest() {
+    const type = firmwareType.value;
+    if (type === "addressable") {
+      addressableGroup.style.display = "block";
+      const canId = canIdSelect.value;
+      button.setAttribute("manifest", `manifest/addressableLED${canId}.json`);
+    } else if (type === "addressableflex") {
+      addressableGroup.style.display = "none";
+      button.setAttribute("manifest", "manifest/addressableLEDFlexID.json");
+    } else {
+      addressableGroup.style.display = "none";
+      if (type === "battery_1") {
+        button.setAttribute("manifest", "manifest/batteryRFID.json");
+      } else if (type === "battery_2") {
+        button.setAttribute("manifest", "manifest/batteryRFID_IM.json");
+      } else if (type === "lvgl") {
+        button.setAttribute("manifest", "manifest/lvgl.json");
       }
+    }
+  }
 
-      firmwareType.addEventListener("change", updateManifest);
-      canIdSelect.addEventListener("change", updateManifest);
-      updateManifest(); // initialize
-    </script>
+  firmwareType.addEventListener("change", updateManifest);
+  canIdSelect.addEventListener("change", updateManifest);
+  updateManifest(); // initialize
+</script>
+
   </body>
 </html>
