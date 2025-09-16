@@ -9,26 +9,15 @@
 
     <label for="firmware-type">Select Firmware:</label>
     <select id="firmware-type">
-      <option value="addressable">Addressable LED</option>
-      <option value="addressableflex">Addressable LED (Flex ID)</option>
-      <option value="battery_1">Battery RFID (ID 33, CAN TX 16 RX 17)</option>
-	  <option value="battery_2">Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)</option>
-      <option value="lvgl">LVGL Touchscreen</option>
+      <!-- Populated from firmwarelist.json -->
     </select>
 
     <br /><br />
 
-    <div id="addressable-group">
+    <div id="addressable-group" style="display:none;">
       <label for="can-id">Select CAN ID:</label>
       <select id="can-id">
-        <option value="1">CAN ID 1</option>
-        <option value="2">CAN ID 2</option>
-        <option value="3">CAN ID 3</option>
-        <option value="4">CAN ID 4</option>
-        <option value="5">CAN ID 5</option>
-        <option value="6">CAN ID 6</option>
-        <option value="7">CAN ID 7</option>
-        <option value="8">CAN ID 8</option>
+        <!-- Options injected dynamically -->
       </select>
     </div>
 
@@ -40,28 +29,31 @@
 
     <br />
 
-    <esp-web-install-button id="flash-button" manifest="manifest/addressableLED1.json">
+    <esp-web-install-button id="flash-button">
       <span slot="unsupported">Your browser does not support Web Serial. Try Chrome or Edge.</span>
     </esp-web-install-button>
-	<br><br><br><a href="webIDTool.html" target="_blank">
+    
+    <br><br><br>
+    <a href="webIDTool.html" target="_blank">
        WEB CAN Device Number set tool
-      </a>
+    </a>
+
     <br /><br />
     <hr />
     <footer style="font-size: 0.9em; color: gray;">
-
-	
       Firmware compiled from
       <a href="https://github.com/sikaxn/FRC-Custom-CAN-Sensor/" target="_blank">
         https://github.com/sikaxn/FRC-Custom-CAN-Sensor/
       </a>
       using 2025-06-27 source code.
-	  <br>
-	  Update: 2025-07-13 Addressable LED (Flex ID)
-	  <br>
-	  Update: 2025-09-16 Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)
-	  <br>
-	        <a href="factory/index.html" target="_blank">
+      <br>
+      Update: 2025-07-13 Addressable LED (Flex ID)
+      <br>
+      Update: 2025-09-16 Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)
+      <br>
+	  Update: 2025-09-16 Web code update
+      <br>
+      <a href="factory/index.html" target="_blank">
         IronMaple ESP32‐FRC‐devkit Factory Test Firmware 工厂测试固件 
       </a>
     </footer>
@@ -72,30 +64,69 @@
   const addressableGroup = document.getElementById("addressable-group");
   const button = document.getElementById("flash-button");
 
-  function updateManifest() {
-    const type = firmwareType.value;
-    if (type === "addressable") {
-      addressableGroup.style.display = "block";
-      const canId = canIdSelect.value;
-      button.setAttribute("manifest", `manifest/addressableLED${canId}.json`);
-    } else if (type === "addressableflex") {
-      addressableGroup.style.display = "none";
-      button.setAttribute("manifest", "manifest/addressableLEDFlexID.json");
+  let firmwareDefs = [];
+
+  function setCanIdOptions(canIds) {
+    if (Array.isArray(canIds) && canIds.length) {
+      canIdSelect.innerHTML = canIds.map(id => `<option value="${id}">CAN ID ${id}</option>`).join("");
     } else {
-      addressableGroup.style.display = "none";
-      if (type === "battery_1") {
-        button.setAttribute("manifest", "manifest/batteryRFID.json");
-      } else if (type === "battery_2") {
-        button.setAttribute("manifest", "manifest/batteryRFID_IM.json");
-      } else if (type === "lvgl") {
-        button.setAttribute("manifest", "manifest/lvgl.json");
-      }
+      // fallback default 1..8
+      const fallback = Array.from({length: 8}, (_, i) => i+1);
+      canIdSelect.innerHTML = fallback.map(id => `<option value="${id}">CAN ID ${id}</option>`).join("");
     }
   }
 
-  firmwareType.addEventListener("change", updateManifest);
-  canIdSelect.addEventListener("change", updateManifest);
-  updateManifest(); // initialize
+  function computeManifest(def) {
+    if (def.manifest) return def.manifest;
+    if (def.manifestTemplate) {
+      const canId = canIdSelect.value;
+      return def.manifestTemplate.replace("{CAN_ID}", canId);
+    }
+    return "";
+  }
+
+  function updateUI() {
+    const type = firmwareType.value;
+    const def = firmwareDefs.find(f => f.id === type);
+    if (!def) return;
+    if (def.needsCanId || (def.manifestTemplate && def.manifestTemplate.includes("{CAN_ID}"))) {
+      addressableGroup.style.display = "block";
+    } else {
+      addressableGroup.style.display = "none";
+    }
+    button.setAttribute("manifest", computeManifest(def));
+  }
+
+  async function init() {
+    try {
+      const resp = await fetch("firmwarelist.json", { cache: "no-cache" });
+      const data = await resp.json();
+      firmwareDefs = data.firmwares || [];
+
+      firmwareType.innerHTML = firmwareDefs
+        .map(f => `<option value="${f.id}">${f.label}</option>`)
+        .join("");
+
+      if (firmwareDefs[0]?.canIds) {
+        setCanIdOptions(firmwareDefs[0].canIds);
+      } else {
+        setCanIdOptions();
+      }
+
+      firmwareType.addEventListener("change", () => {
+        const def = firmwareDefs.find(f => f.id === firmwareType.value);
+        if (def?.canIds) setCanIdOptions(def.canIds);
+        updateUI();
+      });
+      canIdSelect.addEventListener("change", updateUI);
+
+      updateUI();
+    } catch (e) {
+      console.error("Failed to load firmwarelist.json", e);
+    }
+  }
+
+  init();
 </script>
 
   </body>
