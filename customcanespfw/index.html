@@ -3,14 +3,22 @@
   <head>
     <title>Flash Firmware - ESP Web Tools</title>
     <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
+    <style>
+      #status-msg {
+        margin: 8px 0;
+        font-weight: bold;
+        color: darkred;
+      }
+    </style>
   </head>
   <body>
     <h1>Flash Firmware</h1>
 
     <label for="firmware-type">Select Firmware:</label>
-    <select id="firmware-type">
-      <!-- Populated from firmwarelist.json -->
+    <select id="firmware-type" disabled>
+      <option>Loading firmware list...</option>
     </select>
+    <div id="status-msg"></div>
 
     <br /><br />
 
@@ -50,8 +58,8 @@
       Update: 2025-07-13 Addressable LED (Flex ID)
       <br>
       Update: 2025-09-16 Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)
-      <br>
-	  Update: 2025-09-16 Web code update
+      <br>  
+	    Update: 2025-09-16 Web code update
       <br>
       <a href="factory/index.html" target="_blank">
         IronMaple ESP32‐FRC‐devkit Factory Test Firmware 工厂测试固件 
@@ -63,8 +71,14 @@
   const canIdSelect = document.getElementById("can-id");
   const addressableGroup = document.getElementById("addressable-group");
   const button = document.getElementById("flash-button");
+  const statusMsg = document.getElementById("status-msg");
 
   let firmwareDefs = [];
+
+  function setStatus(msg, color = "darkred") {
+    statusMsg.textContent = msg || "";
+    statusMsg.style.color = color;
+  }
 
   function setCanIdOptions(canIds) {
     if (Array.isArray(canIds) && canIds.length) {
@@ -94,18 +108,29 @@
     } else {
       addressableGroup.style.display = "none";
     }
-    button.setAttribute("manifest", computeManifest(def));
+    const manifest = computeManifest(def);
+    if (manifest) {
+      button.setAttribute("manifest", manifest);
+      setStatus(""); // clear message
+    } else {
+      button.removeAttribute("manifest");
+      setStatus("No manifest found for this firmware.");
+    }
   }
 
   async function init() {
     try {
       const resp = await fetch("firmwarelist.json", { cache: "no-cache" });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       firmwareDefs = data.firmwares || [];
+
+      if (!firmwareDefs.length) throw new Error("Firmware list is empty");
 
       firmwareType.innerHTML = firmwareDefs
         .map(f => `<option value="${f.id}">${f.label}</option>`)
         .join("");
+      firmwareType.disabled = false;
 
       if (firmwareDefs[0]?.canIds) {
         setCanIdOptions(firmwareDefs[0].canIds);
@@ -121,8 +146,8 @@
       canIdSelect.addEventListener("change", updateUI);
 
       updateUI();
-    } catch (e) {
-      console.error("Failed to load firmwarelist.json", e);
+    } catch (err) {
+      setStatus("⚠️ Failed to load firmwarelist.json: " + err.message);
     }
   }
 
