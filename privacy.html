@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy</title>
+  <meta name="description" content="Privacy Policy: We do not collect, store, or transmit your data." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111827;
+      --muted: #6b7280;
+      --card: #f9fafb;
+      --link: #2563eb;
+      --border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f16;
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --card: #111827;
+        --link: #93c5fd;
+        --border: #1f2937;
+      }
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--fg);
+    }
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 4rem;
+    }
+    header {
+      margin-bottom: 2rem;
+      padding: 1.25rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    h1 {
+      margin: 0 0 .25rem;
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      line-height: 1.2;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.15rem;
+    }
+    p, li { color: var(--fg); }
+    a { color: var(--link); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    footer {
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    code { background: rgba(127,127,127,.12); padding: .1rem .35rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <header aria-labelledby="pp-title">
+      <h1 id="pp-title">Privacy Policy</h1>
+      <div class="meta">Last updated: <time id="last-updated" datetime=""></time></div>
+    </header>
+
+    <section class="card" aria-labelledby="what-we-do">
+      <h2 id="what-we-do">What We Do</h2>
+      <ul>
+        <li>The app runs entirely on your device.</li>
+        <li>It does <strong>not</strong> phone home, send telemetry, or track your usage in any way.</li>
+        <li>We do not collect, store, share, or sell any information about you.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="others-may-collect">
+      <h2 id="others-may-collect">What Others May Collect</h2>
+      <p>
+        When you download the app or use our web tools, your <strong>Internet Service Provider (ISP)</strong> and our
+        <strong>hosting provider</strong> may log standard technical information (for example: IP address, browser type,
+        and connection time) for security and troubleshooting. These logs are not controlled by us.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="third-parties">
+      <h2 id="third-parties">Third Parties</h2>
+      <ul>
+        <li>We do not include analytics, advertising, or tracking frameworks.</li>
+        <li>Any incidental server logs are maintained by the hosting provider under their own policies.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="your-choices">
+      <h2 id="your-choices">Your Choices</h2>
+      <p>
+        Since we don’t collect data, there’s nothing you need to opt out of. If you have concerns about logs kept by your
+        ISP or the hosting provider, please review their privacy policies.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="contact">
+      <h2 id="contact">Contact</h2>
+      <p>
+        Questions about this Privacy Policy? Email us at
+        <a href="mailto:va3fen@gmail.com">va3fen@gmail.com</a>.
+      </p>
+    </section>
+
+    <footer>
+      <p>This page is provided for transparency. We keep it concise because we do not collect your data.</p>
+    </footer>
+  </main>
+
+  <script>
+    // Set the "Last updated" date—edit the string below if you prefer a fixed date.
+    (function () {
+      const el = document.getElementById("last-updated");
+      // Use a fixed date string if you prefer: e.g., const d = new Date("2025-09-19");
+      const d = new Date(); // today
+      const iso = d.toISOString().split("T")[0];
+      el.dateTime = iso;
+      el.textContent = d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    })();
+  </script>
+</body>
+</html>
