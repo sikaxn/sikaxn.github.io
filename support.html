@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support</title>
+  <meta name="description" content="Support page with links to GitHub repositories and help resources." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111827;
+      --muted: #6b7280;
+      --card: #f9fafb;
+      --link: #2563eb;
+      --border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f16;
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --card: #111827;
+        --link: #93c5fd;
+        --border: #1f2937;
+      }
+    }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--fg);
+    }
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 4rem;
+    }
+    header {
+      margin-bottom: 2rem;
+      padding: 1.25rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    h1 {
+      margin: 0 0 .25rem;
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      line-height: 1.2;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.15rem;
+    }
+    p, li { color: var(--fg); }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    footer {
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <header aria-labelledby="support-title">
+      <h1 id="support-title">Support</h1>
+      <div class="meta">Find resources, documentation, and code repositories.</div>
+    </header>
+
+    <section class="card" aria-labelledby="help">
+      <h2 id="help">Getting Help</h2>
+      <p>
+        If you run into issues or have questions about the app or tools, the best place to start is our GitHub repositories. 
+        You can browse the code, open issues, or contribute improvements.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="repos">
+      <h2 id="repos">Repositories</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/sikaxn/FRC-Custom-CAN-Sensor/tree/main/Arduino/Battery_Tracking" target="_blank" rel="noopener">
+            FRC-Custom-CAN-Sensor (Battery Tracking)
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/sikaxn/FRC-RFID-Battery-Reader/" target="_blank" rel="noopener">
+            FRC-RFID-Battery-Reader
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="contact">
+      <h2 id="contact">Contact</h2>
+      <p>
+        For direct support inquiries, you can reach us at 
+        <a href="mailto:va3fen@gmail.com">va3fen@gmail.com</a>.
+      </p>
+    </section>
+
+    <footer>
+      <p>Thanks for using our tools! Contributions and feedback are always welcome on GitHub.</p>
+    </footer>
+  </main>
+</body>
+</html>
