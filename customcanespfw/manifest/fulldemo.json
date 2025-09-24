@@ -1,0 +1,16 @@
+{
+  "name": "IM Dev board Full CAN demo",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "improv": false,
+      "parts": [
+        {
+          "path": "../firmware/firmware_fulldemo.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

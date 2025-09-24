@@ -22,6 +22,11 @@
       "label": "Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)",
       "manifest": "manifest/batteryRFID_IM.json"
     },
+	    {
+      "id": "fullimboarddemo",
+      "label": "IM Dev board Full CAN demo",
+      "manifest": "manifest/fulldemo.json"
+    },
     {
       "id": "lvgl",
       "label": "LVGL Touchscreen",
