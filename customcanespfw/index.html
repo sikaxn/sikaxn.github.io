@@ -3,6 +3,9 @@
   <head>
     <title>Flash Firmware - ESP Web Tools</title>
     <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
     <style>
       #status-msg {
         margin: 8px 0;
@@ -49,34 +52,10 @@
 
     <br /><br />
     <hr />
-    <footer style="font-size: 0.9em; color: gray;">
-      Firmware compiled from
-      <a href="https://github.com/sikaxn/FRC-Custom-CAN-Sensor/" target="_blank">
-        https://github.com/sikaxn/FRC-Custom-CAN-Sensor/
-      </a>
-      using 2025-06-27 source code.
-      <br>
-      Update: 2025-07-13 Addressable LED (Flex ID)
-      <br>
-      Update: 2025-09-16 Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)
-      <br>  
-	    Update: 2025-09-16 Web code update
-      <br>
-      Update: 2025-09-25 Add IM Devboard CAN demo code
-      <br>
-      Update: 2025-09-29 Web code update
-      <br>
-      <a href="factory/index.html" target="_blank">
-        IronMaple ESP32‐FRC‐devkit Factory Test Firmware 工厂测试固件 
-      </a>
-      <hr>
-      <br>
-      <a href="../privacy.html" target="_blank">
-        Privacy Policy 
-      </a> |       <a href="../support.html" target="_blank">
-        Get Support 
-      </a>
-    </footer>
+<footer id="release-notes" style="font-size: 0.9em; color: gray;">
+  <div>Loading release notes…</div>
+</footer>
+
 
 <script>
   const firmwareType = document.getElementById("firmware-type");
@@ -84,6 +63,12 @@
   const addressableGroup = document.getElementById("addressable-group");
   const button = document.getElementById("flash-button");
   const statusMsg = document.getElementById("status-msg");
+
+  // Markdown containers (for per-firmware notes)
+  const mdUpContainer = document.createElement("div");
+  const mdDownContainer = document.createElement("div");
+  button.parentNode.insertBefore(mdUpContainer, button);
+  button.parentNode.insertBefore(mdDownContainer, button.nextSibling);
 
   let firmwareDefs = [];
 
@@ -94,11 +79,14 @@
 
   function setCanIdOptions(canIds) {
     if (Array.isArray(canIds) && canIds.length) {
-      canIdSelect.innerHTML = canIds.map(id => `<option value="${id}">CAN ID ${id}</option>`).join("");
+      canIdSelect.innerHTML = canIds
+        .map(id => `<option value="${id}">CAN ID ${id}</option>`)
+        .join("");
     } else {
-      // fallback default 1..8
-      const fallback = Array.from({length: 8}, (_, i) => i+1);
-      canIdSelect.innerHTML = fallback.map(id => `<option value="${id}">CAN ID ${id}</option>`).join("");
+      const fallback = Array.from({ length: 8 }, (_, i) => i + 1);
+      canIdSelect.innerHTML = fallback
+        .map(id => `<option value="${id}">CAN ID ${id}</option>`)
+        .join("");
     }
   }
 
@@ -111,23 +99,43 @@
     return "";
   }
 
-  function updateUI() {
+  async function renderMarkdown(url, container) {
+    container.innerHTML = "";
+    if (!url) return;
+    try {
+      const resp = await fetch(url, { cache: "no-cache" });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const text = await resp.text();
+      // marked is a global from the earlier script import
+      container.innerHTML = marked.parse(text);
+    } catch (err) {
+      container.innerHTML = `<div style="color:red;">⚠️ Failed to load ${url}: ${err.message}</div>`;
+    }
+  }
+
+  async function updateUI() {
     const type = firmwareType.value;
     const def = firmwareDefs.find(f => f.id === type);
     if (!def) return;
+
     if (def.needsCanId || (def.manifestTemplate && def.manifestTemplate.includes("{CAN_ID}"))) {
       addressableGroup.style.display = "block";
     } else {
       addressableGroup.style.display = "none";
     }
+
     const manifest = computeManifest(def);
     if (manifest) {
       button.setAttribute("manifest", manifest);
-      setStatus(""); // clear message
+      setStatus("");
     } else {
       button.removeAttribute("manifest");
       setStatus("No manifest found for this firmware.");
     }
+
+    // Markdown rendering for firmware entry
+    await renderMarkdown(def.markdown_up, mdUpContainer);
+    await renderMarkdown(def.markdown_down, mdDownContainer);
   }
 
   async function init() {
@@ -136,7 +144,6 @@
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       firmwareDefs = data.firmwares || [];
-
       if (!firmwareDefs.length) throw new Error("Firmware list is empty");
 
       firmwareType.innerHTML = firmwareDefs
@@ -144,27 +151,40 @@
         .join("");
       firmwareType.disabled = false;
 
-      if (firmwareDefs[0]?.canIds) {
-        setCanIdOptions(firmwareDefs[0].canIds);
-      } else {
-        setCanIdOptions();
-      }
+      if (firmwareDefs[0]?.canIds) setCanIdOptions(firmwareDefs[0].canIds);
+      else setCanIdOptions();
 
-      firmwareType.addEventListener("change", () => {
+      firmwareType.addEventListener("change", async () => {
         const def = firmwareDefs.find(f => f.id === firmwareType.value);
         if (def?.canIds) setCanIdOptions(def.canIds);
-        updateUI();
+        await updateUI();
       });
       canIdSelect.addEventListener("change", updateUI);
 
-      updateUI();
+      await updateUI();
     } catch (err) {
       setStatus("⚠️ Failed to load firmwarelist.json: " + err.message);
     }
   }
 
+  // --- Load release notes from releasenotes.md ---
+  async function loadReleaseNotes() {
+    const footer = document.getElementById("release-notes");
+    if (!footer) return;
+    try {
+      const resp = await fetch("releasenotes.md", { cache: "no-cache" });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const text = await resp.text();
+      footer.innerHTML = marked.parse(text);
+    } catch (err) {
+      footer.innerHTML = `<div style="color:red;">⚠️ Failed to load releasenotes.md: ${err.message}</div>`;
+    }
+  }
+
   init();
+  loadReleaseNotes();
 </script>
+
 
   </body>
 </html>

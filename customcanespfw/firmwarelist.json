@@ -5,22 +5,42 @@
       "label": "Addressable LED",
       "manifestTemplate": "manifest/addressableLED{CAN_ID}.json",
       "needsCanId": true,
-      "canIds": [1, 2, 3, 4, 5, 6, 7, 8]
+      "canIds": [1, 2, 3, 4, 5, 6, 7, 8],
+      "markdown_down": "https://raw.githubusercontent.com/sikaxn/FRC-Custom-CAN-Sensor/refs/heads/dev-board/Arduino/addressableLED/readme.md"
     },
     {
       "id": "addressableflex",
       "label": "Addressable LED (Flex ID)",
-      "manifest": "manifest/addressableLEDFlexID.json"
+      "manifest": "manifest/addressableLEDFlexID.json",
+      "markdown_down": "https://raw.githubusercontent.com/sikaxn/FRC-Custom-CAN-Sensor/refs/heads/dev-board/Arduino/addressableLED/readme.md"
     },
     {
       "id": "battery_1",
       "label": "Battery RFID (ID 33, CAN TX 16 RX 17)",
-      "manifest": "manifest/batteryRFID.json"
+      "manifest": "manifest/batteryRFID.json",
+      "markdown_up": "docs/firmwarepinout.md",
+      "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
     },
     {
       "id": "battery_2",
       "label": "Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)",
-      "manifest": "manifest/batteryRFID_IM.json"
+      "manifest": "manifest/batteryRFID_IM.json",
+      "markdown_up": "docs/firmwarepinout.md",
+      "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
+    },
+        {
+      "id": "battery_3",
+      "label": "Battery RFID Preview (ID 33, CAN TX 4 RX 5 for IM ESP32)",
+      "manifest": "manifest/batteryRFID_IMPV.json",
+      "markdown_up": "docs/preview.md",
+      "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
+    },
+            {
+      "id": "battery_4",
+      "label": "Battery RFID Low Frequency",
+      "manifest": "manifest/batteryRFID_LF.json",
+      "markdown_up": "docs/lf.md",
+      "markdown_down": "https://raw.githubusercontent.com/sikaxn/FRC-Custom-CAN-Sensor/refs/heads/dev-board/Arduino/Battery_Tracking_LF/readme.md"
     },
 	    {
       "id": "fullimboarddemo",
