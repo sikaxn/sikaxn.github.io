@@ -45,7 +45,8 @@
 	    {
       "id": "fullimboarddemo",
       "label": "IM Dev board Full CAN demo",
-      "manifest": "manifest/fulldemo.json"
+      "manifest": "manifest/fulldemo.json",
+      "markdown_down":"https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/805.-IronMaple-ESP32%E2%80%90FRC%E2%80%90devkit-FRC-CAN-Example.md"
     },
     {
       "id": "lvgl",
