@@ -37,6 +37,8 @@
     <button onclick="sendSet()">Send SET</button>
     <button onclick="sendSave()">Send SAVE</button>
     <button onclick="sendGet()">Send GET</button>
+    <button onclick="sendSetTime()">Sync Time</button>
+
   </div>
   <div>
     <button onclick="connectSerial()">🔌 Connect</button>
@@ -111,6 +113,23 @@
       }
       sendCommand(`&CANID SET ${val}`);
     }
+
+  function sendSetTime() {
+    const now = new Date();
+
+    // Convert to UTC components
+    const yyyy = now.getUTCFullYear();
+    const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(now.getUTCDate()).padStart(2, '0');
+    const HH = String(now.getUTCHours()).padStart(2, '0');
+    const MM = String(now.getUTCMinutes()).padStart(2, '0');
+    const SS = String(now.getUTCSeconds()).padStart(2, '0');
+
+    const stamp = `${yyyy}-${mm}-${dd} ${HH}:${MM}:${SS}`;
+    sendCommand("&SETTIME " + stamp);
+  }
+
+
 
     function sendSave() {
       sendCommand("&CANID SAVE");
