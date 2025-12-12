@@ -16,21 +16,21 @@
     },
     {
       "id": "battery_1",
-      "label": "Battery RFID (ID 33, CAN TX 16 RX 17)",
+      "label": "Battery RFID (legacy) (ID 33, CAN TX 16 RX 17)",
       "manifest": "manifest/batteryRFID.json",
       "markdown_up": "docs/firmwarepinout.md",
       "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
     },
     {
       "id": "battery_2",
-      "label": "Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)",
+      "label": "Battery RFID (legacy) (ID 33, CAN TX 4 RX 5 for IM ESP32)",
       "manifest": "manifest/batteryRFID_IM.json",
       "markdown_up": "docs/firmwarepinout.md",
       "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
     },
         {
       "id": "battery_3",
-      "label": "Battery RFID Preview (ID 33, CAN TX 4 RX 5 for IM ESP32)",
+      "label": "Battery RFID (latest, require new roborio driver.) (ID 33, CAN TX 4 RX 5 for IM ESP32)",
       "manifest": "manifest/batteryRFID_IMPV.json",
       "markdown_up": "docs/preview.md",
       "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
