@@ -1,0 +1,16 @@
+{
+  "name": "Battery RFID Tracker IMPV2",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "improv": false,
+      "parts": [
+        {
+          "path": "../firmware/firmware_battery_preview2.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

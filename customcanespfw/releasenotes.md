@@ -5,6 +5,7 @@
 ---
 
 ### 🆕 Updates
+- 2025-12-28 — Battery RFID bugfix release
 - 2025-11-06 — Web code update, added battery RFID LF and battery RFID Preview firmware
 - 2025-07-13 — Addressable LED (Flex ID)  
 - 2025-09-16 — Battery RFID (ID 33, CAN TX 4 RX 5 for IM ESP32)  

@@ -30,11 +30,19 @@
     },
         {
       "id": "battery_3",
-      "label": "Battery RFID (latest, require new roborio driver.) (ID 33, CAN TX 4 RX 5 for IM ESP32)",
+      "label": "Battery RFID (legacy, require new roborio driver.) (ID 33, CAN TX 4 RX 5 for IM ESP32)",
       "manifest": "manifest/batteryRFID_IMPV.json",
       "markdown_up": "docs/preview.md",
       "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
     },
+            {
+      "id": "battery_5",
+      "label": "Battery RFID (bugfix latest, require new roborio driver.) (ID 33, CAN TX 4 RX 5 for IM ESP32)",
+      "manifest": "manifest/batteryRFID_IMPV2.json",
+      "markdown_up": "docs/preview.md",
+      "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
+    },
+
             {
       "id": "battery_4",
       "label": "Battery RFID Low Frequency",
