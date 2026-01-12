@@ -54,8 +54,7 @@
       "id": "battery_led",
       "label": "Battery Tracking and addressable LED Combo BETA",
 	  "markdown_up": "docs/previewcombo.md",
-      "manifest": "manifest/batteryled.json",
-
+      "manifest": "manifest/batteryled.json"
     },
 	    {
       "id": "fullimboarddemo",
