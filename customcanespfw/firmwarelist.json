@@ -43,7 +43,7 @@
       "markdown_down": "https://raw.githubusercontent.com/wiki/sikaxn/FRC-Custom-CAN-Sensor/900.-IronMaple-RFID-Battery-Tracking-Solution.md"
     },
 
-    {
+            {
       "id": "battery_4",
       "label": "Battery RFID Low Frequency",
       "manifest": "manifest/batteryRFID_LF.json",
@@ -52,8 +52,10 @@
     },
 		    {
       "id": "battery_led",
-      "label": "Battery Tracking and addressable LED Combo (beta)",
+      "label": "Battery Tracking and addressable LED Combo BETA",
+	  "markdown_up": "docs/previewcombo.md",
       "manifest": "manifest/batteryled.json",
+
     },
 	    {
       "id": "fullimboarddemo",
