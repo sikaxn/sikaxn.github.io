@@ -5,6 +5,7 @@
 ---
 
 ### 🆕 Updates
+- 2026-01-13 — Battery RFID + LED combo beta 2
 - 2025-12-28 — Battery RFID bugfix release
 - 2025-11-06 — Web code update, added battery RFID LF and battery RFID Preview firmware
 - 2025-07-13 — Addressable LED (Flex ID)  
