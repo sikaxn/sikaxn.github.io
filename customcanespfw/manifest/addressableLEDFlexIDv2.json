@@ -7,7 +7,7 @@
       "improv": false,
       "parts": [
         {
-          "path": "../firmware/firmware_addressableflexID_webtool.bin",
+          "path": "../firmware/firmware_addressableflexID_v2.bin",
           "offset": 0
         }
       ]
