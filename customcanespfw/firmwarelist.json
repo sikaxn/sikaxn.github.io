@@ -14,6 +14,13 @@
       "manifest": "manifest/addressableLEDFlexID.json",
       "markdown_down": "https://raw.githubusercontent.com/sikaxn/FRC-Custom-CAN-Sensor/refs/heads/dev-board/Arduino/addressableLED/readme.md"
     },
+      {
+      "id": "addressableflexv2",
+      "label": "Addressable LED (Flex ID) V2 BETA",
+      "manifest": "manifest/addressableLEDFlexIDv2.json",
+      "markdown_up": "docs/previewcombo.md",
+      "markdown_down": "https://raw.githubusercontent.com/sikaxn/FRC-Custom-CAN-Sensor/refs/heads/dev-board/Arduino/addressableLED/readme.md"
+    },
     {
       "id": "battery_1",
       "label": "Battery RFID (legacy) (ID 33, CAN TX 16 RX 17)",
