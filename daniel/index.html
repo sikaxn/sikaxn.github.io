@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flash Firmware - ESP Web Tools</title>
+    <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
+  </head>
+  <body>
+    <h1>Flash Firmware 固件刷写 (Daniel)</h1>
+
+    <label for="firmware-type">Select Firmware 选择固件:</label>
+    <select id="firmware-type">
+      <option value="factory">Daniel</option>
+    </select>
+
+
+    <esp-web-install-button id="flash-button" manifest="manifest/Daniel.json">
+      <span slot="unsupported">Your browser does not support Web Serial. Try Chrome or Edge.</span>
+    </esp-web-install-button>
+
+
+
+    <br /><br />
+	Step 0: Use a PC or Mac to open this webpage.<br>
+	Step 1: Connect to UART1 USB Port<br>
+	Step 2: Click Connect above<br>
+	Step 3: Enjoy!<br>
+<img src="flash.png"><br />
+    <hr />
+    <footer style="font-size: 0.9em; color: gray;">
+      Update: 2026-02-06 Daniel
+    </footer>
+
+    <script>
+      const firmwareType = document.getElementById("firmware-type");
+      const button = document.getElementById("flash-button");
+
+      function updateManifest() {
+        // Always point to factory.json regardless of selection
+        button.setAttribute("manifest", "manifest/factory.json");
+      }
+
+      firmwareType.addEventListener("change", updateManifest);
+      updateManifest(); // initialize
+    </script>
+  </body>
+</html>
