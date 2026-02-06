@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "builds": [
     {
-      "chipFamily": "ESP32",
+      "chipFamily": "ESP32-S3",
       "improv": false,
 	  "new_install_improv_wait_time ":0,
       "parts": [
