@@ -1,0 +1,18 @@
+<svg width="360" height="360" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+  <defs><filter id="g"><feGaussianBlur stdDeviation="4"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <circle cx="180" cy="190" r="128" fill="#ffd04d" filter="url(#g)"/>
+  <g transform="translate(180 190)">
+    <path d="M0 0 L0 -120 A120 120 0 0 1 84.85 -84.85 Z" fill="#25c66a"/>
+    <path d="M0 0 L84.85 -84.85 A120 120 0 0 1 120 0 Z" fill="#34c6ff"/>
+    <path d="M0 0 L120 0 A120 120 0 0 1 84.85 84.85 Z" fill="#ff4c87"/>
+    <path d="M0 0 L84.85 84.85 A120 120 0 0 1 0 120 Z" fill="#ffcc36"/>
+    <path d="M0 0 L0 120 A120 120 0 0 1 -84.85 84.85 Z" fill="#8a55ff"/>
+    <path d="M0 0 L-84.85 84.85 A120 120 0 0 1 -120 0 Z" fill="#ff6f2d"/>
+    <path d="M0 0 L-120 0 A120 120 0 0 1 -84.85 -84.85 Z" fill="#ffe14f"/>
+    <path d="M0 0 L-84.85 -84.85 A120 120 0 0 1 0 -120 Z" fill="#a43bff"/>
+  </g>
+  <circle cx="180" cy="190" r="128" fill="none" stroke="#ffe76d" stroke-width="12"/>
+  <circle cx="180" cy="190" r="36" fill="#ffb300" stroke="#fff2a1" stroke-width="7"/>
+  <path d="M180 30l29 52h-58l29-52z" fill="#ffb300" stroke="#fff2a1" stroke-width="6"/>
+  <rect x="85" y="310" width="190" height="24" rx="12" fill="#2b2b45"/>
+</svg>

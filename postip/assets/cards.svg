@@ -1,0 +1,14 @@
+<svg width="360" height="260" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg">
+  <defs><filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity="0.45"/></filter></defs>
+  <g filter="url(#shadow)">
+    <rect x="58" y="48" width="90" height="140" rx="12" fill="#fff8df" stroke="#fff" stroke-width="4" transform="rotate(-10 58 48)"/>
+    <text x="76" y="91" font-family="Arial Black" font-size="34" fill="#151515" transform="rotate(-10 76 91)">A</text>
+    <text x="86" y="155" font-family="Arial Black" font-size="62" fill="#151515" transform="rotate(-10 86 155)">♠</text>
+    <rect x="138" y="34" width="90" height="140" rx="12" fill="#fff8df" stroke="#fff" stroke-width="4" transform="rotate(6 138 34)"/>
+    <text x="156" y="76" font-family="Arial Black" font-size="34" fill="#d82425" transform="rotate(6 156 76)">K</text>
+    <text x="169" y="142" font-family="Arial Black" font-size="58" fill="#d82425" transform="rotate(6 169 142)">♥</text>
+    <rect x="218" y="54" width="90" height="140" rx="12" fill="#243d8f" stroke="#fff" stroke-width="4" transform="rotate(14 218 54)"/>
+    <path d="M238 88h53v72h-53z" fill="none" stroke="#7089df" stroke-width="5" transform="rotate(14 238 88)"/>
+    <text x="264" y="150" font-family="Arial Black" font-size="64" fill="#99aef4" transform="rotate(14 264 150)">♠</text>
+  </g>
+</svg>

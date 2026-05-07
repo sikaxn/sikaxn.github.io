@@ -1,0 +1,24 @@
+<svg width="420" height="300" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="420" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#ff47d7"/><stop offset="0.45" stop-color="#6f2cff"/><stop offset="1" stop-color="#241046"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff29a"/><stop offset="0.45" stop-color="#ffb000"/><stop offset="1" stop-color="#b65f00"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect x="48" y="64" width="310" height="198" rx="34" fill="url(#body)" stroke="url(#gold)" stroke-width="8"/>
+  <rect x="80" y="24" width="246" height="64" rx="20" fill="#8b0d23" stroke="url(#gold)" stroke-width="7"/>
+  <text x="203" y="67" text-anchor="middle" font-family="Arial Black,Arial" font-size="35" fill="#ffe36e" filter="url(#glow)">JACKPOT</text>
+  <rect x="82" y="106" width="240" height="104" rx="18" fill="#251233" stroke="#ffd35b" stroke-width="6"/>
+  <g>
+    <rect x="96" y="118" width="66" height="80" rx="12" fill="#fff6d8"/>
+    <rect x="171" y="118" width="66" height="80" rx="12" fill="#fff6d8"/>
+    <rect x="246" y="118" width="66" height="80" rx="12" fill="#fff6d8"/>
+    <text x="129" y="174" text-anchor="middle" font-family="Arial Black,Arial" font-size="54" fill="#e82418" stroke="#7a0e0e" stroke-width="2">6</text>
+    <text x="204" y="174" text-anchor="middle" font-family="Arial Black,Arial" font-size="54" fill="#e82418" stroke="#7a0e0e" stroke-width="2">7</text>
+    <text x="279" y="174" text-anchor="middle" font-family="Arial Black,Arial" font-size="54" fill="#e82418" stroke="#7a0e0e" stroke-width="2">%</text>
+  </g>
+  <path d="M358 115h26c16 0 26 12 26 28v40" stroke="url(#gold)" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="390" cy="100" r="30" fill="#ff2a31" stroke="#ffb55f" stroke-width="6"/>
+  <g fill="url(#gold)">
+    <circle cx="98" cy="247" r="14"/><circle cx="128" cy="260" r="14"/><circle cx="158" cy="247" r="14"/><circle cx="290" cy="245" r="14"/><circle cx="318" cy="260" r="14"/>
+  </g>
+</svg>
