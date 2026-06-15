@@ -3,8 +3,171 @@
 	<head>
 		<title>Student Tech Support</title>
 		<meta charset="utf-8" />
+		<meta name="description" content="Student Tech Support project links for pySSP, Smart Scoreboard, and ESP32 Flasher." />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			#header {
+				align-items: center;
+				gap: 1.5em;
+			}
+
+			.site-nav {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1em;
+				margin-left: auto;
+			}
+
+			.site-nav a,
+			.site-footer a {
+				border-bottom: 0;
+				color: #3d4449;
+				font-weight: 600;
+			}
+
+			.site-nav a:hover,
+			.site-footer a:hover {
+				color: #ff8800 !important;
+			}
+
+			.home-hero {
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				padding: 4em 0 2em;
+				text-align: center;
+			}
+
+			.home-hero h1 {
+				margin-bottom: 0.25em;
+				text-align: center !important;
+				width: 100%;
+			}
+
+			.home-hero p {
+				color: #5b6670;
+				font-size: 1.1em;
+				margin: 0 auto;
+				max-width: 44em;
+				text-align: center !important;
+				width: 100%;
+			}
+
+			.project-grid {
+				display: grid;
+				gap: 1.5em;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				margin: 2.5em 0 3em;
+			}
+
+			.project-tile {
+				align-items: center;
+				background: #ffffff;
+				border: solid 1px rgba(210, 215, 217, 0.9);
+				border-bottom: solid 1px rgba(210, 215, 217, 0.9);
+				border-radius: 8px;
+				box-shadow: 0 0.75em 2em rgba(61, 68, 73, 0.08);
+				display: flex;
+				flex-direction: column;
+				min-height: 24em;
+				padding: 2em 1.4em;
+				text-align: center;
+			}
+
+			.project-tile:hover {
+				border-color: #ff8800;
+				box-shadow: 0 1em 2.4em rgba(61, 68, 73, 0.14);
+				transform: translateY(-3px);
+			}
+
+			.project-icon {
+				align-items: center;
+				aspect-ratio: 1;
+				display: flex;
+				justify-content: center;
+				margin-bottom: 1.5em;
+				max-width: 13em;
+				width: 100%;
+			}
+
+			.project-icon img {
+				display: block;
+				height: 100%;
+				object-fit: contain;
+				width: 100%;
+			}
+
+			.project-tile h2 {
+				font-size: 1.45em;
+				margin-bottom: 0.45em;
+			}
+
+			.project-tile p {
+				color: #6f7880;
+				margin: 0;
+			}
+
+			.random-box {
+				margin: 0 auto 4em;
+				max-width: 52em;
+				text-align: center;
+			}
+
+			.random-box h2 {
+				font-size: 1.35em;
+				margin-bottom: 0.75em;
+			}
+
+			.random-box iframe {
+				background: #ffffff;
+				border: solid 1px rgba(210, 215, 217, 0.9);
+				border-radius: 8px;
+				box-shadow: 0 0.75em 2em rgba(61, 68, 73, 0.06);
+				display: block;
+				height: 9em;
+				width: 100%;
+			}
+
+			.site-footer {
+				border-top: solid 2px rgba(210, 215, 217, 0.75);
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75em 1.25em;
+				justify-content: center;
+				padding: 1.5em 0 0;
+			}
+
+			@media screen and (max-width: 980px) {
+				.project-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.project-tile {
+					min-height: 0;
+				}
+
+				.project-icon {
+					max-width: 11em;
+				}
+			}
+
+			@media screen and (max-width: 736px) {
+				#header {
+					align-items: flex-start;
+					flex-direction: column;
+				}
+
+				.site-nav {
+					margin-left: 0;
+				}
+
+				.home-hero {
+					padding-top: 2.5em;
+					text-align: center;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -18,41 +181,58 @@
 							<!-- Header -->
 								<header id="header">
 									<a href="index.html" class="logo"><strong>Student Tech Support</strong></a>
-									
+									<nav class="site-nav" aria-label="Site links">
+										<a href="privacy.html">Privacy Policy</a>
+										<a href="support.html">Support</a>
+									</nav>
 								</header>
 
 							<!-- Content -->
 								<section>
-									<header class="main">
-										<h1>Isn't fennekin cute?</h1>
+									<header class="main home-hero">
+										<h1>Student Tech Support</h1>
+										<p>Tools and apps for scoreboards, firmware flashing, and production support.</p>
 									</header>
-									<br>
-									Evan Cat is so cute!<br><br><br>
-									<iframe src="https://captive.studenttechsupport.com/magicstr"></iframe>
-									<hr class="major" />
-									<h2>Featured Links</h2>
-									<p>
-										<a href="https://pyssp.studenttechsupport.com/">pyssp</a><br />
-										<a href="https://studenttechsupport.com/customcanespfw/">FRC Iron Maple ESP32 firmware flasher</a>
-									</p>
+
+									<div class="project-grid" aria-label="Featured projects">
+										<a class="project-tile" href="https://pyssp.studenttechsupport.com/">
+											<span class="project-icon">
+												<img src="assets/project-icons/pyssp.png" alt="pySSP icon" />
+											</span>
+											<h2>pySSP</h2>
+											<p>Python-based show and playback support tools.</p>
+										</a>
+
+										<a class="project-tile" href="https://github.com/sikaxn/scoreboard/tree/main">
+											<span class="project-icon">
+												<img src="assets/project-icons/smart-scoreboard.png" alt="Smart Scoreboard icon" />
+											</span>
+											<h2>Smart Scoreboard</h2>
+											<p>A scoreboard app for live game and event displays.</p>
+										</a>
+
+										<a class="project-tile" href="customcanespfw/">
+											<span class="project-icon">
+												<img src="assets/project-icons/esp32-flasher.png" alt="ESP32 Flasher icon" />
+											</span>
+											<h2>ESP32 Flasher</h2>
+											<p>Flash Iron Maple ESP32 firmware directly from the browser.</p>
+										</a>
+									</div>
+
+									<div class="random-box">
+										<h2>Random Text</h2>
+										<iframe src="https://captive.studenttechsupport.com/magicstr" title="Random text"></iframe>
+									</div>
+
+									<footer class="site-footer">
+										<a href="privacy.html">Privacy Policy</a>
+										<a href="support.html">Support</a>
+									</footer>
 								</section>
 
+							</div>
 						</div>
-					</div>
-
-				
-
-							<!-- Section -->
-								
-
-							<!-- Section -->
-
-
-							<!-- Footer -->
-
-
-						</div>
-					</div>
 
 			</div>
 
