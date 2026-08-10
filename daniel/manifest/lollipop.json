@@ -1,6 +1,6 @@
 {
   "name": "lollipop",
-  "version": "6.7.3",
+  "version": "6.8.0",
   "builds": [
     {
       "chipFamily": "ESP32-S3",
@@ -8,7 +8,7 @@
 	  "new_install_improv_wait_time ":0,
       "parts": [
         {
-          "path": "../firmware/lollipop.ino.merged.bin",
+          "path": "../firmware/lollipop2.ino.merged.bin",
           "offset": 0
         }
       ]
