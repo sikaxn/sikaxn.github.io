@@ -9,24 +9,28 @@
 
     <label for="firmware-type">Select Firmware 选择固件:</label>
     <select id="firmware-type">
-      <option value="factory">Daniel</option>
+      <option value="lollipop" selected>Lollipop</option>
+      <option value="daniel">Daniel</option>
     </select>
 
 
-    <esp-web-install-button id="flash-button" manifest="manifest/Daniel.json">
+    <esp-web-install-button id="flash-button" manifest="manifest/lollipop.json">
       <span slot="unsupported">Your browser does not support Web Serial. Try Chrome or Edge.</span>
     </esp-web-install-button>
 
 
 
-    <br /><br />
-	Step 0: Use a PC or Mac to open this webpage.<br>
-	Step 1: Connect to UART1 USB (6) Port<br>
-	Step 2: Click Connect above<br>
-	Step 67: Enjoy!<br>
-	Step ??: If stuck, reboot computer, close Arduino IDE. <br>
-	Step ??: If still stuck, hold BOOT button on the back (16) while flashing. <br>
-<img src="flash.png"><br />
+    <p id="lollipop-instructions">if usb serial not found, press io0 while plugging in usb</p>
+
+    <div id="daniel-instructions" hidden>
+	  Step 0: Use a PC or Mac to open this webpage.<br>
+	  Step 1: Connect to UART1 USB (6) Port<br>
+	  Step 2: Click Connect above<br>
+	  Step 67: Enjoy!<br>
+	  Step ??: If stuck, reboot computer, close Arduino IDE. <br>
+	  Step ??: If still stuck, hold BOOT button on the back (16) while flashing. <br>
+      <img src="flash.png"><br />
+    </div>
     <hr />
     <footer style="font-size: 0.9em; color: gray;">
       Update: 2026-02-06 Daniel
@@ -35,10 +39,14 @@
     <script>
       const firmwareType = document.getElementById("firmware-type");
       const button = document.getElementById("flash-button");
+      const lollipopInstructions = document.getElementById("lollipop-instructions");
+      const danielInstructions = document.getElementById("daniel-instructions");
 
       function updateManifest() {
-        // Always point to factory.json regardless of selection
-        button.setAttribute("manifest", "manifest/Daniel.json");
+        button.setAttribute("manifest", `manifest/${firmwareType.value}.json`);
+        const isLollipop = firmwareType.value === "lollipop";
+        lollipopInstructions.hidden = !isLollipop;
+        danielInstructions.hidden = isLollipop;
       }
 
       firmwareType.addEventListener("change", updateManifest);
