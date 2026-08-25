@@ -10,6 +10,7 @@
     <label for="firmware-type">Select Firmware 选择固件:</label>
     <select id="firmware-type">
       <option value="lollipop" selected>Lollipop V6.8.0</option>
+      <option value="battery-led-combo-s3-zero">Battery LED Combo S3 Zero (ESP32-S3)</option>
       <option value="daniel">Daniel</option>
     </select>
 
@@ -44,9 +45,8 @@
 
       function updateManifest() {
         button.setAttribute("manifest", `manifest/${firmwareType.value}.json`);
-        const isLollipop = firmwareType.value === "lollipop";
-        lollipopInstructions.hidden = !isLollipop;
-        danielInstructions.hidden = isLollipop;
+        lollipopInstructions.hidden = firmwareType.value !== "lollipop";
+        danielInstructions.hidden = firmwareType.value !== "daniel";
       }
 
       firmwareType.addEventListener("change", updateManifest);
