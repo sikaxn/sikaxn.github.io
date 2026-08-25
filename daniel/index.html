@@ -9,13 +9,14 @@
 
     <label for="firmware-type">Select Firmware 选择固件:</label>
     <select id="firmware-type">
-      <option value="lollipop" selected>Lollipop V6.8.0</option>
+      <option value="battery-led-combo-s3-zero-thermal-protection" selected>Battery LED Combo S3 Zero — Thermal Protection (ESP32-S3)</option>
+      <option value="lollipop">Lollipop V6.8.0</option>
       <option value="battery-led-combo-s3-zero">Battery LED Combo S3 Zero (ESP32-S3)</option>
       <option value="daniel">Daniel</option>
     </select>
 
 
-    <esp-web-install-button id="flash-button" manifest="manifest/lollipop.json">
+    <esp-web-install-button id="flash-button" manifest="manifest/battery-led-combo-s3-zero-thermal-protection.json">
       <span slot="unsupported">Your browser does not support Web Serial. Try Chrome or Edge.</span>
     </esp-web-install-button>
 

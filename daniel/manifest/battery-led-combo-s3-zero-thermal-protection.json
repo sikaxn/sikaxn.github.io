@@ -1,0 +1,17 @@
+{
+  "name": "Battery LED Combo S3 Zero Thermal Protection",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "improv": false,
+      "new_install_improv_wait_time ": 0,
+      "parts": [
+        {
+          "path": "../firmware/BatteryLEDComboS3Zero.thermalprotection.ino.merged.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
